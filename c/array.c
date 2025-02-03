@@ -30,6 +30,17 @@ void arrRealloc(Array *arr) {
   arr->capacity = arr->capacity * 2;
 }
 
+Array copy(Array *src) {
+  Array c;
+  c.length = src->length;
+  c.capacity = src->capacity;
+  c.values = (int*)malloc(src->capacity * sizeof(int));
+  for (int i = 0; i < src->length; i++) {
+    c.values[i] = src->values[i];
+  }
+  return c;
+}
+
 void push(Array *arr, int value) {
   if (arr->length >= arr->capacity) {
     arrRealloc(arr);
@@ -68,4 +79,29 @@ void printArray(Array *arr, char *prefix, int showProps) {
   if (showProps) {
     printf("length: %d, capacity: %d\n", arr->length, arr->capacity);
   }
+}
+
+void highlightItems(Array *arr, int *indexes, int idxCount) {
+  printf("[ ");
+  int hlIndex = 0;
+  for (int i = 0; i < arr->length; i++) {
+    if (hlIndex < idxCount && *(indexes + hlIndex) == i) {
+      printf("{%d} ", arr->values[i]);
+      hlIndex++;
+      continue;
+    }
+    printf("%d ", arr->values[i]);
+  }
+  printf("]\n");
+}
+
+void printDelimeter(Array *arr, int after) {
+  printf("[ ");
+  for (int i = 0; i < arr->length; i++) {
+    printf("%d ", arr->values[i]);
+    if (i == after) {
+      printf("| ");
+    }
+  }
+  printf("]\n");
 }
