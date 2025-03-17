@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,6 +12,5 @@ func TestMergeParts(t *testing.T) {
 
 	expected := []int { 5, 6, 7, 8, 12 }
 	
-	fmt.Println(chunk)
 	assert.Equal(t, chunk, expected, "list must be sorted")
 }

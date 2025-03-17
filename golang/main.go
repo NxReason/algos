@@ -6,9 +6,8 @@ import (
 )
 
 func main() {
-	PrintSortingAlgorithm("INSERTION", Insertion)
-	PrintSortingAlgorithm("SELECTION", Selection)
-	PrintSortingAlgorithm("Merge", Merge)
+	fmt.Println(Factors(120))
+	fmt.Println(FactorsV2(120))
 }
 
 func MakeSource(length int) []int {
