@@ -36,11 +36,20 @@ func (il *IntegerList) Prepend(value int) {
 
 func (il *IntegerList) Contains(value int) bool {
 	il.current = il.first
-	for il.current.Next != nil {
+	for il.current != nil {
 		if il.current.Value == value { return true }
 		il.current = il.current.Next
 	}
 	return false
+}
+
+func (il *IntegerList) Find(value int) *IntegerCell {
+	il.current = il.first
+	for il.current != nil {
+		if il.current.Value == value { return il.current }
+		il.current = il.current.Next
+	}
+	return nil
 }
 
 func (il *IntegerList) InsertAt(value int, pos int) error {
